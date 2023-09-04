@@ -1,34 +1,32 @@
 #include "main.h"
 
 /**
-* create_file -it Creates a file and writes text content to it.
-* @filename:Is The name of the file to create.
-* @text_content:is The text content to write to the file.
+* create_file -a function that creates a File.
+* @filename: Is a Pointer to the Name of the File to Create.
+* @text_content: is a pointer to a String that writes to the file.
 *
-* Return: 1 on success, -1 on failure.
+* Return: returns 1 on success, -1 on failure.
 */
 int create_file(const char *filename, char *text_content)
 {
-	int fd, write_result;
-	mode_t file_permissions = S_IRUSR | S_IWUSR;
+	int Fd, W, LEN;
 
 	if (filename == NULL)
 		return (-1);
 
-	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, file_permissions);
-	if (fd == -1)
-		return (-1);
-
 	if (text_content != NULL)
 	{
-		write_result = write(fd, text_content, strlen(text_content));
-		if (write_result == -1)
-		{
-			close(fd);
-			return (-1);
-		}
+		for (LEN = 0; text_content[LEN];)
+			LEN++;
 	}
 
-	close(fd);
+	Fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	W = write(Fd, text_content, LEN);
+
+	if (Fd == -1 || W == -1)
+		return (-1);
+
+	close(Fd);
+
 	return (1);
 }
