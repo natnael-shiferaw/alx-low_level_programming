@@ -4,8 +4,9 @@
 
 /**
 * main - check the code
-*
-* Return: Always 0.
+*@ac: is argc
+* @av: is argv
+*Return: Always 0.
 */
 int main(int ac, char **av)
 {
