@@ -14,8 +14,9 @@ void print_elf_info(Elf64_Ehdr *elf_header);
 */
 void print_elf_info(Elf64_Ehdr *elf_header)
 {
+	int i;
 	printf("Magic:   ");
-	for (int i = 0; i < EI_NIDENT; i++)
+	for (i = 0; i < EI_NIDENT; i++)
 		printf("%02x ", elf_header->e_ident[i]);
 	printf("\n");
 	printf("Class:                             ");
