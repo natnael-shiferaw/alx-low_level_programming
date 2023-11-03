@@ -144,11 +144,11 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 
 	IDX = key_index((const unsigned char *)key, ht->size);
 
-	if (IDX >= ht->size)
+	if (ht->size <= IDX)
 		return (NULL);
 
 	NODE = ht->shead;
-	while (NODE != NULL && strcmp(NODE->key, key) != 0)
+	while (NULL != NODE && 0 != strcmp(NODE->key, key))
 		NODE = NODE->snext;
 
 	return ((NODE == NULL) ? NULL : NODE->value);
