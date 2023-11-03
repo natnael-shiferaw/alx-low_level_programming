@@ -19,7 +19,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	IDX = key_index((const unsigned char *)key, ht->size);
 
-	if (IDX >= ht->size)
+	if (ht->size <= IDX)
 		return (NULL);
 
 	NODE = ht->array[IDX];
