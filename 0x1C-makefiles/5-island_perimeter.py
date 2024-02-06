@@ -17,7 +17,7 @@ def island_perimeter(grid):
     # Step 2: Iterate through the grid to count the number of land nodes and
     #        shared edges.
     # Step 3: Calculate and return the perimeter using the formula:
-    #         perimeter = (number of land nodes * 4) - (number of shared edges * 2)
+    #   perimeter = (number of land nodes * 4) - (number of shared edges * 2)
     # In this case the time Complexity would be big 'o' of 'n' square(O(n^2))
     size = 0
     edges = 0
