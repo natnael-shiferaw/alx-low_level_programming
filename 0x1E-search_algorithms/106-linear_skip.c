@@ -30,7 +30,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		return (NULL);
 
 	for (current = jump_node = list; jump_node->next != NULL &&
-    jump_node->n < value;)
+      jump_node->n < value;)
 	{
 		current = jump_node;
 		if (jump_node->express != NULL)
@@ -50,7 +50,8 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		   current->index, jump_node->index);
 
 	for (; current->index < jump_node->index && current->n < value;
-    current = current->next)
+      current = current->next)
+
 		printf("Value checked at index [%ld] = [%d]\n", current->index, current->n);
 	printf("Value checked at index [%ld] = [%d]\n", current->index, current->n);
 
