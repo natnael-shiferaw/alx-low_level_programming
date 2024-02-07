@@ -28,37 +28,39 @@
 
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t jump_step, step_size;
-	listint_t *current_node, *jump_node;
+size_t jump_step, step_size;
+listint_t *current_node, *jump_node;
 
-	if (list == NULL || size == 0)
-		return (NULL);
+if (list == NULL || size == 0)
+	return (NULL);
 
-	jump_step = 0;
-	step_size = sqrt(size);
-	for (current_node = jump_node = list;
-	 jump_node->index + 1 < size && jump_node->n < value;)
-	{
-		current_node = jump_node;
-		for (jump_step += step_size; jump_node->index < jump_step;
-		 jump_node = jump_node->next)
-		{
-			if (jump_node->index + 1 == size)
-				break;
-		}
-		printf("Value checked at index [%ld] = [%d]\n", jump_node->index,
-		 jump_node->n);
-	}
+jump_step = 0;
+step_size = sqrt(size);
 
-	printf("Value found between indexes [%ld] and [%ld]\n",
-		   current_node->index, jump_node->index);
+for (current_node = jump_node = list;
+jump_node->index + 1 < size && jump_node->n < value;)
+{
+current_node = jump_node;
 
-	for (; current_node->index < jump_node->index && current_node->n < value;
-	 current_node = current_node->next)
-		printf("Value checked at index [%ld] = [%d]\n",
-		 current_node->index, current_node->n);
-	printf("Value checked at index [%ld] = [%d]\n", current_node->index,
-	 current_node->n);
+for (jump_step += step_size; jump_node->index < jump_step;
+jump_node = jump_node->next)
+{
+	if (jump_node->index + 1 == size)
+			break;
+}
+printf("Value checked at index [%ld] = [%d]\n", jump_node->index,
+		jump_node->n);
+}
 
-	return (current_node->n == value ? current_node : NULL);
+printf("Value found between indexes [%ld] and [%ld]\n",
+		current_node->index, jump_node->index);
+
+for (; current_node->index < jump_node->index && current_node->n < value;
+current_node = current_node->next)
+	printf("Value checked at index [%ld] = [%d]\n",
+		current_node->index, current_node->n);
+printf("Value checked at index [%ld] = [%d]\n", current_node->index,
+	current_node->n);
+
+return (current_node->n == value ? current_node : NULL);
 }
