@@ -45,8 +45,8 @@ current_node = jump_node;
 for (jump_step += step_size; jump_node->index < jump_step;
 jump_node = jump_node->next)
 {
-	if (jump_node->index + 1 == size)
-			break;
+if (jump_node->index + 1 == size)
+	break;
 }
 printf("Value checked at index [%ld] = [%d]\n", jump_node->index,
 		jump_node->n);
